@@ -17,7 +17,6 @@ At least 2 VM's, or bare metal machines running CentOS 7(minimal) that have IP a
 1). Install ansible
 
 ```
-#!bash
 brew install ansible
 
 ```
@@ -25,7 +24,6 @@ brew install ansible
 2). Clone this repo
 
 ```
-#!bash
 git clone REPO_URL
 
 ```
@@ -43,7 +41,6 @@ NOTE: Additional lines will need to be added in both places in the case where mo
 
 Deploy a kubernetes cluster to `lab` environment
 ```
-#!bash
 ./scripts/provision/kubernetes.sh lab
 
 ```
