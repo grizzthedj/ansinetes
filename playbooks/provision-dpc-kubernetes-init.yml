@@ -1,0 +1,7 @@
+
+- name: Root Provision of Kubernetes Cluster Nodes
+  hosts: ["kubernetes-master", "kubernetes-minions"]
+  user: root
+  roles:  
+    - {role: ../../roles/provision/base-docker-ce, tags: ['kubernetes']}
+    - {role: ../../roles/provision/base-kubernetes, tags: ['kubernetes']}

@@ -1,0 +1,16 @@
+
+- name: Template kubeadm.conf
+  template: dest="/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" src=10-kubeadm.conf mode=664 owner=root group=root
+
+- name: Reload units
+  shell: systemctl daemon-reload && systemctl restart kubelet
+
+- name: Pause to allow kubelet to come up
+  shell: sleep 2
+
+- name: Install pod network  
+  shell: kubeadm init --pod-network-cidr=10.244.0.0/16 > /tmp/k8s_install.log
+
+- name: Pass bridged IPv4 traffic to iptables chains
+  shell: sysctl net.bridge.bridge-nf-call-iptables=1
+

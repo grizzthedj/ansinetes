@@ -1,0 +1,33 @@
+
+- name: Copy admin-user.yml
+  copy: >
+        src=admin_user.yml
+        dest=/tmp
+        owner={{kubernetes_user}}
+        group={{kubernetes_user}}
+        mode=0644
+        backup=yes
+
+- name: Copy cluster-role-binding.yml
+  copy: >
+        src=cluster_role_binding.yml
+        dest=/tmp
+        owner={{kubernetes_user}}
+        group={{kubernetes_user}}
+        mode=0644
+        backup=yes
+
+- name: Create admin-user
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: kubectl create -f /tmp/admin_user.yml
+
+- name: Create cluster-role-binding
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: kubectl create -f /tmp/cluster_role_binding.yml
+
+- name: Run kubectl as reverse proxy(using port 8001)
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: kubectl proxy &

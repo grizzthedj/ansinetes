@@ -1,0 +1,12 @@
+
+- name: Update yum package index
+  shell: yum makecache fast
+
+# - name: Install current Docker CE
+#   yum: name="docker-ce{{docker_version}}" state=present
+
+- name: Install older version of docker for kubeadm support
+  shell: yum install -y --setopt=obsoletes=0 docker-ce-17.03.1.ce-1.el7.centos docker-ce-selinux-17.03.1.ce-1.el7.centos
+
+- name: Ensure docker is running and enabled to start at boot time
+  action: service name=docker state=started enabled=yes

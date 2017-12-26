@@ -1,0 +1,7 @@
+
+- name: Root Provision of Kubernetes Master Nodes
+  hosts: kubernetes-master
+  user: root
+  roles:  
+    - {role: ../../roles/provision/base-kubernetes-master, tags: ['kubernetes']}
+

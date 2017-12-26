@@ -1,0 +1,30 @@
+
+- name: Upload kubernetes.repo
+  copy: >
+        src=kubernetes.repo
+        dest=/etc/yum.repos.d/kubernetes.repo
+        owner=root
+        group=root
+        mode=0644
+        backup=yes
+
+- name: Upload kubernetes config for iptables
+  copy: >
+        src=k8s.conf
+        dest=/etc/sysctl.d/k8s.conf
+        owner=root
+        group=root
+        mode=0644
+        backup=yes
+
+- name: Apply sysctl config 
+  shell: sysctl --system
+
+- name: Upload selinux config
+  copy: >
+        src=selinux.conf
+        dest=/etc/selinux/config
+        owner=root
+        group=root
+        mode=0644
+        backup=yes

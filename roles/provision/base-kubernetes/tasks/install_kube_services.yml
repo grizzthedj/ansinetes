@@ -1,0 +1,19 @@
+
+- name: Disable selinux
+  shell: setenforce 0
+
+- name: Disable swap
+  shell: swapoff -a
+
+- name: Install kubelet, kubeadm & kubectl
+  shell: yum -y install kubelet kubeadm kubectl
+
+- name: Ensure kubelet is running and enabled to start at boot time
+  action: service name=kubelet state=started enabled=yes
+
+- name: Ensure docker is running and enabled to start at boot time
+  action: service name=docker state=started enabled=yes
+
+- name: Ensure firewalld is stopped and disabled at boot time
+  action: service name=firewalld state=stopped enabled=no
+  ignore_errors: true

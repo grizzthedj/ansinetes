@@ -1,0 +1,7 @@
+
+[kubernetes-master]
+172.XXX.XXX.XXX  # K8s Master
+
+[kubernetes-minions]
+172.XXX.XXX.XXX  # Minion #1
+172.XXX.XXX.XXX  # Minion #2

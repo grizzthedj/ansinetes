@@ -1,0 +1,6 @@
+
+- name: Root Provision of Kubernetes Minion Nodes
+  hosts: kubernetes-minions
+  user: root
+  roles:  
+    - {role: ../../roles/provision/base-kubernetes-minion, tags: ['kubernetes']}

@@ -1,0 +1,15 @@
+
+# - name: Ensure kubelet is running and enabled to start at boot time
+#   action: service name=kubelet state=started enabled=yes
+
+# - name: Ensure docker is running and enabled to start at boot time
+#   action: service name=docker state=started enabled=yes
+
+- name: Template kubeadm.conf
+  template: dest="/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" src=10-kubeadm.conf mode=664 owner=root group=root
+
+- name: Reload units
+  shell: systemctl daemon-reload && systemctl restart kubelet
+
+- name: Join minion to cluster 
+  shell: kubeadm join --token {{token}} kubernetes-master:6443 --discovery-token-ca-cert-hash sha256:{{cert_hash}}

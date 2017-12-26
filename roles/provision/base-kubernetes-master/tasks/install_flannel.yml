@@ -1,0 +1,10 @@
+
+- name: Install Flannel
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+
+- name: Expose token and CA cert hash 
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: echo "KUBEADM JOIN URL:" && cat /tmp/k8s_install.log | grep "kubeadm join"

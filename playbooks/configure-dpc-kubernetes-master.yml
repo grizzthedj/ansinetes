@@ -1,0 +1,6 @@
+
+- name: Configuration of Kubernetes Master Nodes
+  hosts: kubernetes-master
+  user: root
+  roles:  
+    - {role: ../../roles/configure/kubernetes, tags: ['kubernetes']}

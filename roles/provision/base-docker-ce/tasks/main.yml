@@ -1,0 +1,4 @@
+
+- include: install_dependencies.yml
+- include: add_repository.yml
+- include: install_docker.yml

@@ -1,0 +1,15 @@
+
+- name: Deploy kubernetes dashboard
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/master/src/deploy/recommended/kubernetes-dashboard.yaml
+
+- name: Create bearer token
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}') >> /tmp/k8s_install.log
+
+- name: Expose token for dashboard login 
+  become: True
+  become_user: "{{kubernetes_user}}"
+  shell: cat /tmp/k8s_install.log | grep 'token:'

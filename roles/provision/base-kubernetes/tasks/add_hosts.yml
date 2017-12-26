@@ -1,0 +1,9 @@
+
+- name: Add Kubernetes Master host to hosts file
+  lineinfile: line='{{kubernetes_master_host}}' state=present insertafter=EOF regexp='{{kubernetes_master_host}}' dest=/etc/hosts
+
+- name: Add Kubernetes Minion 1 host to hosts file
+  lineinfile: line='{{kubernetes_minion_1_host}}' state=present insertafter=EOF regexp='{{kubernetes_minion_1_host}}' dest=/etc/hosts
+
+- name: Add Kubernetes Minion 2 to hosts file
+  lineinfile: line='{{kubernetes_minion_2_host}}' state=present insertafter=EOF regexp='{{kubernetes_minion_2_host}}' dest=/etc/hosts

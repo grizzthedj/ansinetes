@@ -1,0 +1,4 @@
+
+- include: init_master.yml
+- include: create_k8s_user.yml
+- include: install_flannel.yml

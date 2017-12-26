@@ -1,0 +1,18 @@
+
+- name: Create {{kubernetes_user}} user
+  shell: "useradd {{kubernetes_user}}"
+
+- name: Create .kube dir in home 
+  shell: "mkdir -p /home/{{kubernetes_user}}/.kube" 
+
+- name: Copy admin.conf into /home/{{kubernetes_user}}/.kube 
+  shell: "cp -i /etc/kubernetes/admin.conf /home/{{kubernetes_user}}/.kube/config"
+
+- name: Change ownership of the .kube stuff
+  shell: "chown -R {{kubernetes_user}}:{{kubernetes_user}} /home/{{kubernetes_user}}/.kube"
+
+- name: Change ownership of /tmp/k8s_install.log to {{kubernetes_user}}
+  shell: chown {{kubernetes_user}}:{{kubernetes_user}} /tmp/k8s_install.log
+
+- name: Add {{kubernetes_user}} to docker group
+  shell: usermod -aG docker {{kubernetes_user}}
