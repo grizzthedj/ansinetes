@@ -18,14 +18,12 @@ At least 2 VM's, or bare metal machines running CentOS 7(minimal) that have IP a
 
 ```
 brew install ansible
-
 ```
 
 2). Clone this repo
 
 ```
-git clone REPO_URL
-
+git clone https://github.com/grizzthedj/ansinetes
 ```
 
 ## Configuration
@@ -42,7 +40,6 @@ NOTE: Additional lines will need to be added in both places in the case where mo
 Deploy a kubernetes cluster to `lab` environment
 ```
 ./scripts/provision/kubernetes.sh lab
-
 ```
 
 The above script is interactive and will prompt for the following: 
@@ -51,5 +48,12 @@ The above script is interactive and will prompt for the following:
 2. K8s Master token(is to be copied from the ansible output, see screenshot below)
 3. CA cert hash(is to be copied from the ansible output, see screenshot below)
 
+###  Dashboard access
+
+To access the Kubernetes Dashboard from your local workstation, the playbook creates a secure channel to your Kubernetes cluster via `kubectl proxy`.
+
+The Dashboard can be accessed at:
+
+http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 
 
