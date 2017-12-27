@@ -48,6 +48,8 @@ The above script is interactive and will prompt for the following:
 2. K8s Master token(is to be copied from the ansible output, see screenshot below)
 3. CA cert hash(is to be copied from the ansible output, see screenshot below)
 
+![alt text](https://github.com/grizzthedj/ansinetes/blob/master/docs/token-cert-hash.png)
+
 ###  Dashboard access
 
 To access the Kubernetes Dashboard from your local workstation, the playbook creates a secure channel to your Kubernetes cluster via `kubectl proxy`.
@@ -55,5 +57,9 @@ To access the Kubernetes Dashboard from your local workstation, the playbook cre
 The Dashboard can be accessed at:
 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
+
+To login as a `kube-admin` user, use the token from the ansible playbook output as shown in the screenshot below:
+
+![alt text](https://github.com/grizzthedj/ansinetes/blob/master/docs/login-token.png)
 
 
