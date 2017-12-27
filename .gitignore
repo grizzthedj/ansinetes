@@ -1,4 +1,7 @@
 .DS_Store
 
+group_vars/lab
+hosts
+
 *.retry
 
