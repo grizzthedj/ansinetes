@@ -30,10 +30,46 @@ git clone https://github.com/grizzthedj/ansinetes
 
 The IP addresses for the kubernetes master and minions need to be configured in 2 places. 
 
-1. The hosts file(in the root of this project)
-2. In the `group_vars/lab` file.   
+1. The hosts file
 
-NOTE: Additional lines will need to be added in both places in the case where more that 2 minions need to be deployed.
+Create a file called `hosts` in the root of this project, and add the following content(substituting XXX with the desired IP addresses:
+```
+[kubernetes-master]
+172.XXX.XXX.XXX  # K8s Master
+
+[kubernetes-minions]
+172.XXX.XXX.XXX  # Minion #1
+172.XXX.XXX.XXX  # Minion #2
+
+[lab:children]
+lab_kubernetes_master
+lab_kubernetes_minions
+
+[lab_kubernetes_master]
+172.XXX.XXX.XXX nickname=lab-kubernetes-master branch=test
+
+[lab_kubernetes_minions]
+172.XXX.XXX.XXX nickname=lab-kubernetes-minion-1 branch=test
+172.XXX.XXX.XXX nickname=lab-kubernetes-minion-2 branch=test
+```
+
+2. In the `group_vars/lab` file
+
+Create a file called `lab` in the `group_vars` directory, and add the following content(substituting XXX with the desired IP addresses:
+```
+kubernetes_master_ip: 172.XXX.XXX.XXX
+kubernetes_minion_1_ip: 172.XXX.XXX.XXX
+kubernetes_minion_2_ip: 172.XXX.XXX.XXX
+
+cgroup_driver: cgroupfs
+cluster_dns_ip: 10.96.0.10
+kubernetes_user: kuber
+kubernetes_master_host: "{{kubernetes_master_ip}}    kubernetes-master"
+kubernetes_minion_1_host: "{{kubernetes_minion_1_ip}}    kubernetes-minion-1"
+kubernetes_minion_2_host: "{{kubernetes_minion_2_ip}}    kubernetes-minion-2"
+```
+
+NOTE: Additional lines will need to be added in both files in the case where more that 2 minions need to be deployed.
 
 ### Usage
 
