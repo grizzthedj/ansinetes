@@ -88,14 +88,13 @@ The above script is interactive and will prompt for the following:
 
 ###  Dashboard access
 
-To access the Kubernetes Dashboard from your local workstation, the playbook creates a secure channel to your Kubernetes cluster via `kubectl proxy`. You need to setup port forwarding over SSH using port 8001 to access the dashboard.
+To access the Kubernetes Dashboard from your local workstation, the playbook creates a secure channel to your Kubernetes cluster via `kubectl proxy`. You need to setup port forwarding over SSH(to the master) using port 8001 to access the dashboard.
 
-NOTE: This is not currently working as intended. The temporary workaround is to login to the master server as root, and run the following: 
+NOTE: This is not currently working as intended. The temporary workaround is to login to the master server as root, and run the following, after the playbook has completed: 
 
 ```
 su kuber
 kubectl proxy &
-exit
 ```
 
 Once port forwarding is setup, the Dashboard can be accessed at:
