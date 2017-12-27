@@ -1,7 +1,20 @@
 
+# TODO: Remove the duplication here
+
 [kubernetes-master]
-172.XXX.XXX.XXX  # K8s Master
+172.16.16.189  # K8s Master
 
 [kubernetes-minions]
-172.XXX.XXX.XXX  # Minion #1
-172.XXX.XXX.XXX  # Minion #2
+172.16.16.224  # Minion #1
+172.16.16.210  # Minion #2
+
+[lab:children]
+lab_kubernetes_master
+lab_kubernetes_minions
+
+[lab_kubernetes_master]
+172.16.16.189 nickname=lab-kubernetes-master branch=test
+
+[lab_kubernetes_minions]
+172.16.16.224 nickname=lab-kubernetes-minion-1 branch=test
+172.16.16.210 nickname=lab-kubernetes-minion-2 branch=test

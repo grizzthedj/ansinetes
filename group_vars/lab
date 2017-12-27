@@ -1,8 +1,8 @@
 
 # Kubernetes
-kubernetes_master_ip: 172.XXX.XXX.XXX
-kubernetes_minion_1_ip: 172.XXX.XXX.XXX
-kubernetes_minion_2_ip: 172.XXX.XXX.XXX
+kubernetes_master_ip: 172.16.16.189
+kubernetes_minion_1_ip: 172.16.16.224
+kubernetes_minion_2_ip: 172.16.16.210
 
 cgroup_driver: cgroupfs
 cluster_dns_ip: 10.96.0.10
