@@ -23,7 +23,7 @@ brew install ansible
 2). Clone this repo
 
 ```
-git clone https://github.com/grizzthedj/ansinetes
+git clone https://github.com/grizzthedj/ansinetes && cd ansinetes
 ```
 
 ## Configuration
