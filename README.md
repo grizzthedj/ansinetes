@@ -55,11 +55,11 @@ lab_kubernetes_minions
 
 2. In the `group_vars/lab` file
 
-Create a file called `lab` in the `group_vars` directory, and add the following content(substituting XXX with the desired "Real" IP addresses:
+Create a file called `lab` in the `group_vars` directory, and add the following content(substituting XXX with the desired internal or "Real" IP addresses:
 ```
-kubernetes_master_ip: 172.XXX.XXX.XXX
-kubernetes_minion_1_ip: 172.XXX.XXX.XXX
-kubernetes_minion_2_ip: 172.XXX.XXX.XXX
+kubernetes_master_ip: 10.XXX.XXX.XXX
+kubernetes_minion_1_ip: 10.XXX.XXX.XXX
+kubernetes_minion_2_ip: 10.XXX.XXX.XXX
 
 cgroup_driver: cgroupfs
 cluster_dns_ip: 10.96.0.10
