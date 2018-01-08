@@ -32,7 +32,7 @@ The IP addresses for the kubernetes master and minions need to be configured in 
 
 1. The hosts file
 
-Create a file called `hosts` in the root of this project, and add the following content(substituting XXX with the desired IP addresses:
+Create a file called `hosts` in the root of this project, and add the following content(substituting XXX with the desired "NAT'd" IP addresses(or "Real" IP's can be used if there is connectivity from the ansible host):
 ```
 [kubernetes-master]
 172.XXX.XXX.XXX  # K8s Master
@@ -55,7 +55,7 @@ lab_kubernetes_minions
 
 2. In the `group_vars/lab` file
 
-Create a file called `lab` in the `group_vars` directory, and add the following content(substituting XXX with the desired IP addresses:
+Create a file called `lab` in the `group_vars` directory, and add the following content(substituting XXX with the desired "Real" IP addresses:
 ```
 kubernetes_master_ip: 172.XXX.XXX.XXX
 kubernetes_minion_1_ip: 172.XXX.XXX.XXX
