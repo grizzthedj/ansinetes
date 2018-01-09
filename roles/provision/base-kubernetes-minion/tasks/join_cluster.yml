@@ -5,6 +5,9 @@
 # - name: Ensure docker is running and enabled to start at boot time
 #   action: service name=docker state=started enabled=yes
 
+- name: Install nfs-utils in case NFS needs to be mounted in containers
+  yum: name=nfs-utils state=present
+
 - name: Template kubeadm.conf
   template: dest="/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" src=10-kubeadm.conf mode=664 owner=root group=root
 
