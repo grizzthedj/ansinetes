@@ -1,5 +1,5 @@
 
-- name: Root Provision of Kubernetes Minion Nodes
+- name: Root configuration of Kubernetes Minion Nodes
   hosts: kubernetes-minions
   user: root
   roles:  

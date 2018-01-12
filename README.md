@@ -90,18 +90,11 @@ The above script is interactive and will prompt for the following:
 
 To access the Kubernetes Dashboard from your local workstation, the playbook creates a secure channel to your Kubernetes cluster via `kubectl proxy`. You need to setup port forwarding over SSH(to the master) using port 8001 to access the dashboard.
 
-NOTE: This is not currently working as intended. The temporary workaround is to login to the master server as root, and run the following, after the playbook has completed: 
-
-```
-su kuber
-kubectl proxy &
-```
-
 Once port forwarding is setup, the Dashboard can be accessed at:
 
 http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/
 
-To login as a `kube-admin` user, use the token from the ansible playbook output as shown in the screenshot below:
+To login as a `kube-admin` user, use the token from the last ansible task output as shown in the screenshot below:
 
 ![alt text](https://github.com/grizzthedj/ansinetes/blob/master/docs/login-token.png)
 

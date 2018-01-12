@@ -26,8 +26,3 @@
   become: True
   become_user: "{{kubernetes_user}}"
   shell: kubectl create -f /tmp/cluster_role_binding.yml
-
-- name: Run kubectl as reverse proxy(using port 8001)
-  become: True
-  become_user: "{{kubernetes_user}}"
-  shell: kubectl proxy &

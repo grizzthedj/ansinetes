@@ -1,5 +1,5 @@
 
-- name: Root Provision of Kubernetes Master Nodes
+- name: Root configuration of Kubernetes Master Nodes
   hosts: kubernetes-master
   user: root
   roles:  
