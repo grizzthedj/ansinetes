@@ -55,7 +55,7 @@ lab_kubernetes_minions
 
 2. In the `group_vars/lab` file
 
-Create a file called `lab` in the `group_vars` directory, and add the following content(substituting XXX with the desired internal or "Real" IP addresses:
+Create a file called `lab` in the `group_vars` directory, and add the following content(substituting XXX with the desired internal or "Real" IP addresses). Also, add the IP's for primary and secondary nameservers.
 ```
 kubernetes_master_ip: 10.XXX.XXX.XXX
 kubernetes_minion_1_ip: 10.XXX.XXX.XXX
@@ -67,6 +67,9 @@ kubernetes_user: kuber
 kubernetes_master_host: "{{kubernetes_master_ip}}    kubernetes-master"
 kubernetes_minion_1_host: "{{kubernetes_minion_1_ip}}    kubernetes-minion-1"
 kubernetes_minion_2_host: "{{kubernetes_minion_2_ip}}    kubernetes-minion-2"
+
+nameserver_1: XXX.XXX.XXX.XXX
+nameserver_2: XXX.XXX.XXX.XXX
 ```
 
 NOTE: Additional lines will need to be added in both files in the case where more that 2 minions need to be deployed.
