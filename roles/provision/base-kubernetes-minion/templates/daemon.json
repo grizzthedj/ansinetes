@@ -1,0 +1,3 @@
+{                                                                          
+    "dns": ["{{nameserver_1}}", "{{nameserver_2}}"]                                                                           
+}

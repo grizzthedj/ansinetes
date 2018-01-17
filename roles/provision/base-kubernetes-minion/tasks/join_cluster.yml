@@ -1,15 +1,12 @@
 
-# - name: Ensure kubelet is running and enabled to start at boot time
-#   action: service name=kubelet state=started enabled=yes
-
-# - name: Ensure docker is running and enabled to start at boot time
-#   action: service name=docker state=started enabled=yes
-
 - name: Install nfs-utils in case NFS needs to be mounted in containers
   yum: name=nfs-utils state=present
 
 - name: Template kubeadm.conf
   template: dest="/etc/systemd/system/kubelet.service.d/10-kubeadm.conf" src=10-kubeadm.conf mode=664 owner=root group=root
+
+- name: Template daemon.json
+  template: dest="/etc/docker/daemon.json" src=daemon.json mode=664 owner=root group=root
 
 - name: Reload units
   shell: systemctl daemon-reload && systemctl restart kubelet
@@ -18,4 +15,4 @@
   shell: sleep 5
 
 - name: Join minion to cluster 
-  shell: nohup kubeadm join --token {{token}} kubernetes-master:6443 --discovery-token-ca-cert-hash sha256:{{cert_hash}} & 
+  shell: nohup kubeadm join --token {{token}} kubernetes-master:6443 --discovery-token-ca-cert-hash sha256:{{cert_hash}} &

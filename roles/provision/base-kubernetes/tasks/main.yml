@@ -2,3 +2,4 @@
 - include: upload_configs.yml
 - include: add_hosts.yml
 - include: install_kube_services.yml
+- include: install_tools.yml
