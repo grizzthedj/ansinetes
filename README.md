@@ -89,6 +89,8 @@ The above script is interactive and will prompt for the following:
 
 ![alt text](https://github.com/grizzthedj/ansinetes/blob/master/docs/token-cert-hash.png)
 
+NOTE: The full `kubectl join` commands displayed in the ansible output need to be manually run on each minion after the ansible playbook run is completed. These commands are run inside the playbook, however it is unknown why they don't take effect. This will be fixed in the near future.
+
 ###  Dashboard access
 
 To access the Kubernetes Dashboard from your local workstation, the playbook creates a secure channel to your Kubernetes cluster via `kubectl proxy`. You need to setup port forwarding over SSH(to the master) using port 8001 to access the dashboard.
