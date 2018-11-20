@@ -2,7 +2,7 @@
 - name: Install Flannel
   become: True
   become_user: "{{kubernetes_user}}"
-  shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/v0.9.1/Documentation/kube-flannel.yml
+  shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/bc79dd1505b0c8681ece4de4c0d86c5cd2643275/Documentation/kube-flannel.yml
 
 - name: Expose token and CA cert hash 
   become: True

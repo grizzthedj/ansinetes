@@ -6,7 +6,7 @@
   shell: systemctl daemon-reload && systemctl restart kubelet
 
 - name: Pause to allow kubelet to come up
-  shell: sleep 2
+  shell: sleep 5
 
 - name: Install pod network  
   shell: kubeadm init --pod-network-cidr=10.244.0.0/16 > /tmp/k8s_install.log

@@ -1,6 +1,8 @@
 .DS_Store
 
 group_vars/lab
+group_vars/geekfest
+
 hosts
 
 *.retry
