@@ -2,7 +2,7 @@
 - name: Deploy kubernetes dashboard
   become: True
   become_user: "{{kubernetes_user}}"
-  shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v1.10.1/src/deploy/recommended/kubernetes-dashboard.yaml
+  shell: kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.0/aio/deploy/recommended.yaml
 
 - name: Create bearer token
   become: True
